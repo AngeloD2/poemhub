@@ -59,7 +59,7 @@
   </template>
   
   <script>
-  import citiesColRef from "../firebase";
+  import poemsColRef from "../firebase";
   import { getDoc, doc, setDoc } from "firebase/firestore";
   export default {
     data() {
@@ -79,7 +79,7 @@
   
     methods: {
       async getPoem() {
-        let poemRef = doc(citiesColRef, this.poemId);
+        let poemRef = doc(poemsColRef, this.poemId);
         this.docRef = poemRef;
         let poem = await getDoc(this.docRef);
         let poemData = poem.data();

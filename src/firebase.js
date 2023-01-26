@@ -2,6 +2,8 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database"
 import { getFirestore, collection } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword, signOut, 
+  signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,7 +23,11 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app)
+const auth = getAuth(app)
 const poemsColRef = collection(db, "poems");
-export default poemsColRef;
+export default { poemsColRef };
 
-export { db }
+
+
+export { db, auth, createUserWithEmailAndPassword, signOut,
+                 signInWithEmailAndPassword, onAuthStateChanged }

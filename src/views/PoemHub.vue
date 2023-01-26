@@ -9,17 +9,14 @@
             <v-divider color="primary" thickness="5"> </v-divider>    
           </v-col>
 
-          <v-col cols="6" class="bg-secondary border border-0 rounded-2" style="min-height: 500px">
+          <v-col cols="6" class="bg-secondary border border-0 rounded-2" 
+              style="min-height: 500px; max-height: 600px; overflow:hidden; overflow-y:scroll">
             <v-main>
             <v-row name="contentTitle" class="border border-0 rounded-top py-3 justify-content-center"> 
                 <span> Poems </span>
             </v-row>
             <v-divider thickness="5"> </v-divider>
-            <v-card class="py-2 bg-tertiary">
-              <v-container style="max-height:768px; overflow-y:scroll; overflow-x:hidden">
                 <PoemsListVue/>
-              </v-container>
-              </v-card>
             </v-main>
           </v-col>
 

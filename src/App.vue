@@ -12,7 +12,7 @@
           <v-col cols="6" class="link-cont d-flex justify-content-around">
             <RouterLink to="/">
               <v-btn class="link">
-                <i class="fas fa-home fa-beat-fade" aria-hidden="true"></i>
+                <i class="fas fa-home" aria-hidden="true"></i>
                 Feed
               </v-btn>
             </RouterLink>
@@ -28,6 +28,8 @@
             </RouterLink>
           </v-col>
 
+
+
           <v-col cols="2">
             <v-btn
               :prepend-icon="
@@ -36,6 +38,23 @@
               @click="onClick"
               >Toggle Theme</v-btn
             >
+          </v-col>
+
+          <v-col cols="2">
+            <RouterLink to="/register">
+            <v-btn>
+              Register
+              </v-btn>
+              </RouterLink>
+
+              <RouterLink to="/login">
+            <v-btn>
+              Login
+              </v-btn>
+              </RouterLink>
+            <v-btn @click="logoutUser">
+              Logout
+              </v-btn>
           </v-col>
         </v-row>
       </v-app-bar>
@@ -48,7 +67,25 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import { ref } from "vue";
+import { auth, signOut, onAuthStateChanged } from './firebase'
+import { async } from "@firebase/util";
 const theme = ref("light");
+
+// async function state() {
+//   onAuthStateChanged(auth, (user) => {
+//     console.log('user status:', user)
+//   })
+// }
+
+async function logoutUser() {
+  signOut(auth).then(() => {
+
+  })
+  .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+          });
+}
 
 function onClick() {
   theme.value = theme.value === "light" ? "dark" : "light";
